@@ -1,29 +1,17 @@
 <?php
 require_once "include/functions.php";
+require_once "view/view.php";
 require_once "include/oeuvres.php";
+
+ob_start();
 ?>
-<!doctype html>
-<html lang="fr">
-<head>
-<?php
-require_once "include/headerHTML.php";
-?>
-</head>
-<body>
-<?php
-require_once "include/header.php";
-?>
-    <main>
-        <div id="liste-oeuvres">
-        <?php
-            foreach($oeuvres as $oeuvre) {
-                echo articleFromOeuvre($oeuvre);
-            }
-        ?>
-        </div>
-    </main>
+<div id="liste-oeuvres">
     <?php
-        require_once "include/footer.php";
+    foreach($oeuvres as $oeuvre) {
+        echo articleFromOeuvre($oeuvre);
+    }
     ?>
-</body>
-</html>
+</div>
+<?php
+$mainContent = ob_get_clean();
+echo render($mainContent);
