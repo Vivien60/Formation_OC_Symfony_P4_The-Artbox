@@ -2,17 +2,20 @@
 require_once "include/functions.php";
 require_once "include/oeuvres.php";
 $oeuvreId = intval($_GET['id']);
-$oeuvre = $oeuvres[$oeuvreId];
+$oeuvre = null;
+foreach($oeuvres as $oeuvreInCollection) {
+    if($oeuvreInCollection['id'] === $oeuvreId) {
+        $oeuvre = $oeuvreInCollection;
+        break;
+    }
+}
 ?>
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <title>The ArtBox</title>
+<?php
+require_once "include/headerHTML.php";
+?>
 </head>
 <body>
 <?php
