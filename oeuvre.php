@@ -1,6 +1,8 @@
 <?php
 require_once "include/functions.php";
 require_once "include/oeuvres.php";
+$oeuvreId = intval($_GET['id']);
+$oeuvre = $oeuvres[$oeuvreId];
 ?>
 <!doctype html>
 <html lang="fr">
@@ -14,19 +16,15 @@ require_once "include/oeuvres.php";
 </head>
 <body>
 <?php
-require_once "include/header.php";
+	require_once "include/header.php";
 ?>
-    <main>
-        <div id="liste-oeuvres">
-        <?php
-            foreach($oeuvres as $oeuvre) {
-                echo articleFromOeuvre($oeuvre);
-            }
-        ?>
-        </div>
-    </main>
+<main>
     <?php
-        require_once "include/footer.php";
+        echo articleFromOeuvreWithDetails($oeuvre);
     ?>
+</main>
+<?php
+    require_once "include/footer.php";
+?>
 </body>
 </html>
