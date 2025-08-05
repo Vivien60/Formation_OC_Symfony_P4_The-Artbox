@@ -1,15 +1,9 @@
 <?php
-require_once "include/functions.php";
 require_once "view/view.php";
-require_once "include/oeuvres.php";
+require_once "include/oeuvre.php";
+
 $oeuvreId = intval($_GET['id']);
-$oeuvre = null;
-foreach($oeuvres as $oeuvreInCollection) {
-    if($oeuvreInCollection['id'] === $oeuvreId) {
-        $oeuvre = $oeuvreInCollection;
-        break;
-    }
-}
+$oeuvre = artwork($oeuvreId);
 
 echo render(
         articleFromOeuvreWithDetails($oeuvre)

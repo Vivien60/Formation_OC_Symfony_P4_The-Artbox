@@ -1,14 +1,13 @@
 <?php
-require_once "include/functions.php";
 require_once "view/view.php";
-require_once "include/oeuvres.php";
+require_once "include/oeuvre.php";
 
 ob_start();
 ?>
 <div id="liste-oeuvres">
     <?php
-    foreach($oeuvres as $oeuvre) {
-        echo articleFromOeuvre($oeuvre);
+    foreach(allArtworks() as $oeuvre) {
+        echo htmlArticleFromArtwork($oeuvre);
     }
     ?>
 </div>
