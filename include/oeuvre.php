@@ -19,6 +19,8 @@ function allArtworks() : ?array
 
 function request(string $sql, array $params = []): PDOStatement|false
 {
+    //TODO Vivien : afin d'éviter trop d'aller retours,
+    //  ne faire une requête préparée qu'en cas d'absence de paramètres/filtres
     $mysqlClient = connectToBDD();
     $statement = $mysqlClient->prepare($sql);
     $statement->execute($params);
