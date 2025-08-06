@@ -5,12 +5,19 @@ require_once "../include/connectToBDD.php";
 require_once "../include/oeuvre.php";
 require_once "../view/components/formPostLib.php";
 
+session_start();
+$token = !empty($_POST['csrf_token'])? trim(htmlspecialchars($_POST['csrf_token'])) : '';
+if(empty($token) || $token !== $_SESSION['csrf_token']) {
+    http_response_code(405);
+    die();
+}
 ob_start();
+
 $title = htmlspecialchars($_POST['title']);
 $artist = htmlspecialchars($_POST['artist']);
 $desc = htmlspecialchars($_POST['description']);
 $imagUrl = htmlspecialchars(filter_input(INPUT_POST, 'image_link', FILTER_SANITIZE_URL));
-var_dump($imagUrl);
+
 $hasError = false;
 if(empty($title)) {
     $hasError = true;
@@ -47,7 +54,6 @@ if(!$hasError) {
                                 'description' => $desc,
                                 'image' => $imagUrl
                             ]);
-
         displaySuccess();
     } catch(Exception $e) {
         displayError($e->getMessage());

@@ -3,6 +3,7 @@
         <h2 class="register-artwork--title">Enregistrer une nouvelle oeuvre</h2>
     </header>
     <form name="create_artwork" action="post/traitement.php" method="post">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
         <label class="register-artwork__field-group">
             <h3 class="register-artwork__field-group--title">Titre de l'oeuvre <span aria-label="required">*</span></h3>
             <input type="text" name="title" class="register-artwork__input" required>
