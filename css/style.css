@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+/******** Pages ***********/
+@import "pages/form-register-artwork.css";
+
+
 html, body {
     margin: 0;
 }
@@ -15,7 +19,7 @@ a {
     color: inherit;
 }
 
-header {
+body > header {
     display: flex;
     justify-content: space-between;
     max-width: 1080px;
