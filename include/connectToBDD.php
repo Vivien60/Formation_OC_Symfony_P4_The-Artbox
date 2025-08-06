@@ -1,13 +1,13 @@
 <?php
+require_once dirname(__FILE__, 2)."/conf/conf.inc.php";
+
 function connectToBDD() : PDO {
     try {
-        $dsn = 'mysql:host=localhost;dbname=artbox;charset=utf8';
-        $username = 'phpmyadmin';
-        $password = 'none';
+        $dsn = 'mysql:host='.BDD_HOST.';dbname='.BDD_NAME.';charset=utf8';
         $mysqlClient = new PDO(
             $dsn,
-            $username,
-            $password,
+            BDD_USER,
+            BDD_PWD,
         );
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());

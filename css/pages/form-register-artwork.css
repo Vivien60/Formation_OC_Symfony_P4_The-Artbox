@@ -1,0 +1,45 @@
+.register-artwork {
+    width: fit-content;
+}
+
+.register-artwork__header {
+
+}
+
+.register-artwork .register-artwork--title {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.register-artwork .register-artwork__field-group {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.register-artwork .register-artwork__field-group--submit  {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.register-artwork .register-artwork__field-group--title {
+    display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.register-artwork .register-artwork__input {
+
+}
+
+.register-artwork .register-artwork__input--multiline {
+
+}
+
+.register-artwork .register-artwork__input:invalid,
+.register-artwork .register-artwork__input--multiline:invalid {
+    border: 2px dashed red;
+}
