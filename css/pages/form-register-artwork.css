@@ -1,5 +1,6 @@
 .register-artwork {
     width: fit-content;
+    margin: auto;
 }
 
 .register-artwork__header {
@@ -15,7 +16,8 @@
 }
 
 .register-artwork .register-artwork__field-group {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
