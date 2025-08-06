@@ -5,11 +5,18 @@ require_once "../include/connectToBDD.php";
 require_once "../include/oeuvre.php";
 require_once "../view/components/formPostLib.php";
 
+session_start();
+$token = !empty($_POST['csrf_token'])? trim(htmlspecialchars($_POST['csrf_token'])) : '';
+if(empty($token) || $token !== $_SESSION['csrf_token']) {
+    http_response_code(405);
+    die();
+}
 ob_start();
-$title = htmlentities($_POST['title']);
-$artist = htmlentities($_POST['artist']);
-$desc = htmlentities($_POST['description']);
-$imagUrl = filter_input(INPUT_POST, 'image_link', FILTER_SANITIZE_URL);;
+
+$title = htmlspecialchars($_POST['title']);
+$artist = htmlspecialchars($_POST['artist']);
+$desc = htmlspecialchars($_POST['description']);
+$imagUrl = htmlspecialchars(filter_input(INPUT_POST, 'image_link', FILTER_SANITIZE_URL));
 
 $hasError = false;
 if(empty($title)) {
@@ -30,6 +37,7 @@ if(empty($artist)) {
 }
 if(!empty($imagUrl)) {
     $urlScheme = parse_url($imagUrl, PHP_URL_SCHEME);
+    var_dump($urlScheme);
     if(!($urlScheme === 'http' || $urlScheme === 'https')) {
         $hasError = true;
         displayError("L'URL de l'image est incorrecte");
@@ -46,7 +54,6 @@ if(!$hasError) {
                                 'description' => $desc,
                                 'image' => $imagUrl
                             ]);
-
         displaySuccess();
     } catch(Exception $e) {
         displayError($e->getMessage());

@@ -51,7 +51,13 @@ DETAIL;
 
 function imageFromOeuvre($oeuvre)
 {
+    $scheme = parse_url($oeuvre['image'], PHP_URL_SCHEME);
+    if(!empty($scheme) && str_starts_with($scheme, 'http')) {
+        $uri = $oeuvre['image'];
+    } else {
+        $uri = "img/{$oeuvre['image']}";
+    }
     return <<<IMAGE
-    <img src="img/{$oeuvre['image']}" alt="{$oeuvre['nom']}">
+    <img src="{$uri}" alt="{$oeuvre['nom']}">
     IMAGE;
 }
