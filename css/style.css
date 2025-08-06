@@ -47,7 +47,17 @@ footer {
     font-size: 12px;
 }
 
+.form-error {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
 
+.form-success {
+    color: green;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
 
 #liste-oeuvres {
     display: flex;

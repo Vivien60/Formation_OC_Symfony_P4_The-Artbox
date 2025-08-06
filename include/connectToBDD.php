@@ -1,5 +1,5 @@
 <?php
-require_once "conf/conf.inc.php";
+require_once dirname(__FILE__, 2)."/conf/conf.inc.php";
 
 function connectToBDD() : PDO {
     try {
