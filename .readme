@@ -1,0 +1,6 @@
+Le dossier conf est propre à chaque plateforme et contient des informations sensibles, ainsi il n'a pas été chargé, mais voici ses variables :
+const BDD_HOST
+const BDD_NAME
+const BDD_USER
+const BDD_PWD
+const ROOT_URL
